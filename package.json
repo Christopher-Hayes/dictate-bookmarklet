@@ -1,0 +1,23 @@
+{
+  "name": "boil-node",
+  "version": "0.1.0",
+  "description": "A dead simple boilerplate for Node.js projects.",
+  "exports": "./dist/index.mjs",
+  "scripts": {
+    "start": "npx tsx --env-file=.env ./src/main.ts",
+    "dev": "npx tsx watch --env-file=.env ./src/main.ts",
+    "build": "npx pkgroll"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  },
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
