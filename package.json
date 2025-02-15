@@ -1,16 +1,24 @@
 {
-  "name": "boil-node",
+  "name": "local-dictate",
   "version": "0.1.0",
-  "description": "A dead simple boilerplate for Node.js projects.",
   "exports": "./dist/index.mjs",
   "scripts": {
-    "start": "npx tsx --env-file=.env ./src/main.ts",
-    "dev": "npx tsx watch --env-file=.env ./src/main.ts",
-    "build": "npx pkgroll"
+    "start": "npx tsx --env-file=.env ./src/server.ts",
+    "dev": "npx tsx watch --env-file=.env ./src/server.ts",
+    "build": "npx pkgroll",
+    "build-bookmarklet": "npx tsx ./scripts/build-bookmarklet.ts"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@deepgram/sdk": "^3.10.1",
+    "clipboardy": "^4.0.0",
+    "cors": "^2.8.5",
+    "cross-fetch": "^4.1.0",
+    "express": "^4.21.2",
+    "terser": "^5.39.0"
   },
   "compilerOptions": {
     "types": [

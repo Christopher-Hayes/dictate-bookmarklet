@@ -1,50 +1,92 @@
-## Setup
+# 🎤 Dictate Bookmarklet
 
-**One-liner:** Create private repo. Clone it. Install deps. Open VS Code.
+This project allows you to **dictate speech-to-text** in real-time on any website. It uses Deepgram's API for transcription and a local Express server with WebSocket support.
 
-```bash
-PROJECT_NAME='boil-node' # Repo will be named "boil-node" unless you change this.
-gh repo create --private --clone --template Christopher-Hayes/boil-node "$PROJECT_NAME" && cd "$PROJECT_NAME" && npm i && code .
+## 🚀 How It Works
+
+1. **Install & Configure**  
+   - The Express server proxies microphone audio for transcription.
+   - The bookmarklet injects a floating panel UI into any webpage.
+
+2. **Bookmarklet Installation**  
+   - Open the page at: [http://localhost:3003/get-bookmarklet.html](http://localhost:3003/get-bookmarklet.html)  
+     This page displays the bookmarklet code for adding it to your browser. You can also click the link to test it.
+
+3. **UI Development**  
+   - Edit the UI for the bookmarklet in `public/bookmarklet-template.html`.  
+     This template holds HTML/CSS used when building the bookmarklet.
+
+4. **Build Process**  
+   - Use the script `build-bookmarklet.ts` (located in the `scripts` folder) to inject your JS code into the template and produce the final bookmarklet code.
+  
+## 📥 Installation
+
+### 1. Clone the Repository and Install Dependencies
+
+```sh
+git clone https://github.com/Christopher-Hayes/dictate-bookmarklet.git
+cd dictate-bookmarklet
+npm install
 ```
 
-*For other IDEs replace `code .`*
+### 2. Set up your API key
 
-## Start
+Create a `.env` file:
 
-Run your code once.
+```sh
+echo "DEEPGRAM_API_KEY=your-deepgram-api-key-here" > .env
+```
 
-```bash
+### 3. Start the server
+
+```sh
 npm run start
 ```
 
-## Dev
+✅ **The server runs at:** `http://localhost:3003`
 
-Your code will rerun when files change.
+## 🛠 Usage Guide
+
+1. **Open ChatGPT (or any website).**
+2. **Click the bookmarklet.**  
+   - A floating panel appears in the **top-left corner**.
+3. **Click "Start Dictation."**  
+   - Your voice is transcribed in real-time.
+4. **Drag the transcript** into any input field.
+5. **Click "Stop Dictation"** to end recording.
+6. **Click "Hide"** to close the panel.
+
+## 🏗 Project Structure
 
 ```bash
-npm run dev
+📁 deepgram-bookmarklet
+├── 📄 .env # Stores Deepgram API Key
+├── 📁 public
+│   ├── 📄 local-dictate.html # Floating panel for speech-to-text
+│   ├── 📄 bookmarklet-template.html # Template for bookmarklet UI
+│   ├── 📄 get-bookmarklet.html # Displays the bookmarklet code
+├── 📁 scripts
+│   ├── 📄 build-bookmarklet.ts # Script to build the bookmarklet
+└── 📄 README.md
 ```
 
-# boil-node
+## 🏆 Why This Works
 
-A template repo for simple Node.js projects.
+✅ **Bypasses ChatGPT's CSP** → The browser never loads Deepgram scripts directly.  
+✅ **No iframe issues** → Uses a draggable floating panel instead.  
+✅ **Works inside any site** → Dictation works wherever you need text input.  
+✅ **No auto-typing** → Avoids anti-bot detection by letting users manually drag text.  
 
-Primarly focused on prototyping with Node.JS where the tools should not get in the way.
+## ❓ Troubleshooting
 
-## Goals with this template
+### "Microphone access denied"
 
-I use Node.JS a lot for small internal tools. Typescript is a must-have when working with data, and it's hassle remembering how to set it up each time to use modern JS features. Popular GitHub Node.JS templates try to be too helpful, and slow down dev.
+- **Solution:** Allow mic permissions in browser settings.
 
-**This template has..**
+### "Server not found"
 
-- `YES` Supports modern JS features
-- `YES` Typescript should just work
-- `YES` JS is allowed too, typescript is not forced
+- **Solution:** Ensure the Express server is running (`npm run start`).
 
-**This template does not include..**
+### "Transcript not updating"
 
-- `NO` Aggressive linting
-- `NO` Messing with tsc build config
-- `NO` Testing, just building
-- `NO` Git hooks, vscode settings, or other annoying defaults
-  - **Update:** There is a git hook to create `.env` on clone. But, other than that, no hooks.
+- **Solution:** Check if Deepgram API Key is correct in `.env`.
