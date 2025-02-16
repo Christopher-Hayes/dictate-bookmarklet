@@ -70,13 +70,6 @@ npm run start
 └── 📄 README.md
 ```
 
-## 🏆 Why This Works
-
-✅ **Bypasses ChatGPT's CSP** → The browser never loads Deepgram scripts directly.  
-✅ **No iframe issues** → Uses a draggable floating panel instead.  
-✅ **Works inside any site** → Dictation works wherever you need text input.  
-✅ **No auto-typing** → Avoids anti-bot detection by letting users manually drag text.  
-
 ## ❓ Troubleshooting
 
 ### "Microphone access denied"
