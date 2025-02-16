@@ -47,12 +47,12 @@ npm run start
 
 ## 🛠 Usage Guide
 
-1. **Open ChatGPT (or any website).**
+1. **Open any website.**
 2. **Click the bookmarklet.**  
    - A floating panel appears in the **top-left corner**.
 3. **Click "Start Dictation."**  
    - Your voice is transcribed in real-time.
-4. **Drag the transcript** into any input field.
+4. **Drag or copy the transcript** into any input field.
 5. **Click "Stop Dictation"** to end recording.
 6. **Click "Hide"** to close the panel.
 
@@ -61,6 +61,9 @@ npm run start
 ```bash
 📁 deepgram-bookmarklet
 ├── 📄 .env # Stores Deepgram API Key
+├── 📁 src
+│   ├── 📄 server.ts # Express server
+│   ├── 📄 bookmarklet.js # Non-UI bookmarklet code
 ├── 📁 public
 │   ├── 📄 local-dictate.html # Floating panel for speech-to-text
 │   ├── 📄 bookmarklet-template.html # Template for bookmarklet UI
